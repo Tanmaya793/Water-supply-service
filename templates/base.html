@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title if title else "Water Supply Portal" }}</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f9fd;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #0078C1;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+        }
+
+        nav a {
+            color: white;
+            margin-left: 1rem;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 1rem 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .flashes {
+            list-style-type: none;
+            margin-bottom: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #d9f0ff;
+            border-left: 5px solid #0078C1;
+            border-radius: 5px;
+        }
+
+        .flashes li {
+            margin-bottom: 5px;
+        }
+
+        footer {
+            background-color: #e3e3e3;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Water Supply Portal</h1>
+        <nav>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('services') }}">Services</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+            <a href="{{ url_for('login') }}">Login</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}
+        <!-- Dynamic content goes here -->
+        {% endblock %}
+    </div>
+
+    <footer>
+        &copy; {{ current_year if current_year else 2025 }} Water Supply Portal. All rights reserved.
+    </footer>
+</body>
+</html>

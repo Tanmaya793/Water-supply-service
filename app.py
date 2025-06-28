@@ -7,5 +7,9 @@ app = Flask(__name__)
 def home():
     pass
 
+@app.route("/services")
+def services():
+    pass
+
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - User Messages</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f9fd;
+            margin: 0;
+            padding: 2rem;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0078C1;
+            margin-bottom: 2rem;
+        }
+
+        .user-card {
+            background-color: #ffffff;
+            border-left: 6px solid #0078C1;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .user-card h2 {
+            margin-bottom: 0.5rem;
+            color: #005a94;
+        }
+
+        .user-card h4 {
+            margin: 0.3rem 0;
+        }
+
+        .no-data {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #888;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Admin Panel - User Messages</h1>
+
+    {% if data %}
+        {% for email, details in data.items() %}
+            <div class="user-card">
+                <h2>Email: {{ email }}</h2>
+                <h4>Username: {{ details["fullname"] }}</h4>
+                <h4>Mobile No: {{ details["number"] }}</h4>
+                <h4>Message: {{ details["message"] }}</h4>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="no-data">No messages to display.</p>
+    {% endif %}
+
+</body>
+</html>

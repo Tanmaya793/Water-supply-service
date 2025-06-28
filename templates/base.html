@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ title if title else "Water Supply Portal" }}</title>
     <style>
         * {
@@ -11,7 +11,14 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            height: 100%;
+        }
+
         body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f9fd;
             color: #333;
@@ -43,6 +50,10 @@
             text-decoration: underline;
         }
 
+        .wrapper {
+            flex: 1;
+        }
+
         .container {
             max-width: 1000px;
             margin: 2rem auto;
@@ -71,34 +82,35 @@
             padding: 1rem;
             font-size: 0.9rem;
             color: #555;
-            margin-top: 2rem;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Water Supply Portal</h1>
-        <nav>
-            <a href="{{ url_for('home') }}">Home</a>
-            <a href="{{ url_for('services') }}">Services</a>
-            <a href="{{ url_for('contact') }}">Contact</a>
-            <a href="#">Login</a>
-        </nav>
-    </header>
+    <div class="wrapper">
+        <header>
+            <h1>Water Supply Portal</h1>
+            <nav>
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('services') }}">Services</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+                <a href="#">Login</a>
+            </nav>
+        </header>
 
-    <div class="container">
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <ul class="flashes">
-                    {% for message in messages %}
-                        <li>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
+        <div class="container">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flashes">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
 
-        {% block content %}
-        {% endblock %}
+            {% block content %}
+            {% endblock %}
+        </div>
     </div>
 
     <footer>

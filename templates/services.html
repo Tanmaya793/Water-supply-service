@@ -1,4 +1,33 @@
 {% extends "base.html" %}
 
 {% block content %}
-{% endblock content %}
+    <section style="text-align: center; margin-bottom: 2rem;">
+        <h1 style="color: #0078C1;">Our Services</h1>
+        <p style="font-size: 1.1rem; color: #555; max-width: 700px; margin: 0 auto;">
+            We are committed to providing reliable, safe, and accessible water services to our community.
+            Here's a look at what we offer:
+        </p>
+    </section>
+
+    <section style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between;">
+        <div style="flex: 1; min-width: 280px; background-color: #e9f6ff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
+            <h3 style="color: #0078C1;">Domestic Water Supply</h3>
+            <p>Regular supply of clean and safe water to residential areas with on-time delivery and maintenance.</p>
+        </div>
+
+        <div style="flex: 1; min-width: 280px; background-color: #e9f6ff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
+            <h3 style="color: #0078C1;">Commercial Connections</h3>
+            <p>Dedicated services for businesses and industries, ensuring uninterrupted and regulated water flow.</p>
+        </div>
+
+        <div style="flex: 1; min-width: 280px; background-color: #e9f6ff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
+            <h3 style="color: #0078C1;">Water Quality Testing</h3>
+            <p>Routine water quality checks and lab testing services for public and private sources.</p>
+        </div>
+
+        <div style="flex: 1; min-width: 280px; background-color: #e9f6ff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
+            <h3 style="color: #0078C1;">Complaint Redressal</h3>
+            <p>Online portal to raise complaints about leaks, supply delays, and more — with tracking features.</p>
+        </div>
+    </section>
+{% endblock %}

@@ -16,42 +16,104 @@
         }
 
         body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f9fd;
             color: #333;
+            background-color: #f4f9fd;
             line-height: 1.6;
         }
 
-        header {
-            background-color: #0078C1;
-            color: white;
-            padding: 1rem 2rem;
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 70px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
         }
 
-        header h1 {
-            font-size: 1.8rem;
-        }
-
-        nav a {
-            color: white;
-            margin-left: 1rem;
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #0072ff;
             text-decoration: none;
-            font-weight: 500;
         }
 
-        nav a:hover {
-            text-decoration: underline;
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            position: relative;
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            background-size: 200%;
+            background-position: right;
+            transition: background-position 0.3s ease, color 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background-position: left;
+            color: white;
+        }
+
+        /* Responsive Nav */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-wrap: wrap;
+            }
+
+            .nav-menu {
+                width: 100%;
+                justify-content: center;
+                margin-top: 0.5rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-link {
+                display: block;
+                text-align: center;
+            }
         }
 
         .wrapper {
-            flex: 1;
+            padding-top: 80px;
+            min-height: calc(100vh - 100px);
         }
 
         .container {
@@ -76,27 +138,52 @@
             margin-bottom: 5px;
         }
 
+        /* Footer */
         footer {
-            background-color: #e3e3e3;
+            background: #1a1a1a;
+            color: white;
             text-align: center;
-            padding: 1rem;
+            padding: 2rem;
             font-size: 0.9rem;
-            color: #555;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #00c6ff;
         }
     </style>
 </head>
 <body>
-    <div class="wrapper">
-        <header>
-            <h1>Water Supply Portal</h1>
-            <nav>
-                <a href="{{ url_for('home') }}">Home</a>
-                <a href="{{ url_for('services') }}">Services</a>
-                <a href="{{ url_for('contact') }}">Contact</a>
-                <a href="#">Login</a>
-            </nav>
-        </header>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{{ url_for('home') }}" class="logo">
+                <div class="logo-icon">💧</div>
+                <span>AquaPortal</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="{{ url_for('home') }}" class="nav-link {% if request.endpoint == 'home' %}active{% endif %}">Home</a></li>
+                <li><a href="{{ url_for('about') }}" class="nav-link {% if request.endpoint == 'services' %}active{% endif %}">About Us</a></li>
+                <li><a href="{{ url_for('contact') }}" class="nav-link {% if request.endpoint == 'contact' %}active{% endif %}">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
+    <!-- Page Content -->
+    <div class="wrapper">
         <div class="container">
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
@@ -108,13 +195,18 @@
                 {% endif %}
             {% endwith %}
 
-            {% block content %}
-            {% endblock %}
+            {% block content %}{% endblock %}
         </div>
     </div>
 
+    <!-- Footer -->
     <footer>
-        &copy; {{ current_year if current_year else 2025 }} Water Supply Portal. All rights reserved.
+        <div class="footer-links">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('about') }}">About Us</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+        </div>
+        <p>&copy; {{ current_year if current_year else 2025 }} Water Supply Portal. All rights reserved. | Building a sustainable water future for all.</p>
     </footer>
 </body>
 </html>

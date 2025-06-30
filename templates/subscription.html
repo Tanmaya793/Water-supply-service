@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <style>
+        .subscription-info {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .subscription-info h1 {
+            font-size: 2rem;
+            color: #0072ff;
+        }
+
+        .subscription-info ul {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .subscription-info ul li {
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+            color: #444;
+        }
+
+        .subscription-info .cta {
+            margin-top: 1.5rem;
+        }
+
+        .subscription-info .cta a {
+            margin-right: 1rem;
+        }
+    </style>
+
+    <div class="subscription-info">
+        <h1>Unlock Premium Water Services</h1>
+        <p>Subscribing gives you the following exclusive benefits:</p>
+        <ul>
+            <li>✔️ 24/7 uninterrupted water support</li>
+            <li>✔️ Priority service for maintenance requests</li>
+            <li>✔️ IoT-powered smart water usage tracking</li>
+            <li>✔️ Emergency supply assurance during crisis</li>
+        </ul>
+        <div class="cta">
+            <p>🔐 <strong>Login to continue to subscription</strong></p><br>
+            <a href="{{ url_for('login') }}" class="nav-link">Login</a>
+            <a href="{{ url_for('signup') }}" class="nav-link">Signup</a>
+        </div>
+    </div>
+{% endblock %}

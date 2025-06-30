@@ -3,9 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Signup | Waterly</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-btn {
+            background: none;
+            border: none;
+            color: #0072ff;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            padding: 0;
+            text-align: left;
+            display: inline-block;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: #00c6ff;
+            text-decoration: underline;
+        }
+
+
+        .signup-wrapper {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .signup-wrapper h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        form div {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.4rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.6rem 0.75rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            transition: border 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1.1rem;
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-position: left;
+            transform: translateY(-2px);
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="signup-wrapper">
+        <button class="back-btn" onclick="history.back()">← Back</button>
+        <h2>Create Your Account</h2>
+        <form action="#" method="POST">
+            {{ form.hidden_tag() }}
+
+            <div>
+                {{ form.username.label }}
+                {{ form.username }}
+            </div>
+
+            <div>
+                {{ form.email.label }}
+                {{ form.email }}
+            </div>
+
+            <div>
+                {{ form.gender.label }}
+                {{ form.gender }}
+            </div>
+
+            <div>
+                {{ form.dob.label }}
+                {{ form.dob }}
+            </div>
+
+            <div>
+                {{ form.password.label }}
+                {{ form.password }}
+            </div>
+
+            <div>
+                {{ form.confirmPassword.label }}
+                {{ form.confirmPassword }}
+            </div>
+
+            <div>
+                {{ form.submit(class="submit-btn") }}
+            </div>
+        </form>
+    </div>
 </body>
 </html>

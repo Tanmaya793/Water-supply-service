@@ -172,12 +172,13 @@
         <div class="nav-container">
             <a href="{{ url_for('home') }}" class="logo">
                 <div class="logo-icon">💧</div>
-                <span>AquaPortal</span>
+                <span>Waterly</span>
             </a>
             <ul class="nav-menu">
                 <li><a href="{{ url_for('home') }}" class="nav-link {% if request.endpoint == 'home' %}active{% endif %}">Home</a></li>
                 <li><a href="{{ url_for('about') }}" class="nav-link {% if request.endpoint == 'services' %}active{% endif %}">About Us</a></li>
                 <li><a href="{{ url_for('contact') }}" class="nav-link {% if request.endpoint == 'contact' %}active{% endif %}">Contact</a></li>
+                <li><a href="{{ url_for('subscription') }}" class="nav-link {% if request.endpoint == 'subscription' %}active{% endif %}">Subscription</a></li>
             </ul>
         </div>
     </nav>

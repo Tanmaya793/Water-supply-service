@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container" style="text-align: center; padding: 2rem;">
+        <h1 style="color: #00aa55;">🎉 Payment Successful!</h1>
+        <p>Thank you for subscribing to the <strong>{{ plan_name }}</strong> plan.</p>
+        <p>Your subscription is now active.</p>
+        <a href="{{ url_for('home') }}" class="nav-link" style="margin-top: 1rem; display: inline-block;">Go to Home</a>
+    </div>
+{% endblock %}

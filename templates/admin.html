@@ -50,12 +50,12 @@
     <h1>Admin Panel - User Messages</h1>
 
     {% if data %}
-        {% for email, details in data.items() %}
+        {% for row in data %}
             <div class="user-card">
-                <h2>Email: {{ email }}</h2>
-                <h4>Username: {{ details["fullname"] }}</h4>
-                <h4>Mobile No: {{ details["number"] }}</h4>
-                <h4>Message: {{ details["message"] }}</h4>
+                <h2>Email: {{ row.email }}</h2>
+                <h4>Username: {{ row.fullname }}</h4>
+                <h4>Mobile No: {{ row.number }}</h4>
+                <h4>Message: {{ row.message }}</h4>
             </div>
         {% endfor %}
     {% else %}

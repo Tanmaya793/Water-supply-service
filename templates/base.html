@@ -22,6 +22,28 @@
             line-height: 1.6;
         }
 
+        .btn {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            text-align: center;
+            transition: background-position 0.3s ease, transform 0.2s ease;
+            background-size: 200%;
+            background-position: right;
+        }
+
+        .btn:hover {
+            background-position: left;
+            transform: scale(1.05);
+        }
+
+
         /* Navbar */
         .navbar {
             position: fixed;
@@ -91,25 +113,45 @@
             color: white;
         }
 
-        /* Responsive Nav */
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: #0072ff;
+        }
+
         @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
             .nav-container {
                 flex-wrap: wrap;
+                justify-content: space-between;
             }
 
             .nav-menu {
+                display: none;
                 width: 100%;
-                justify-content: center;
-                margin-top: 0.5rem;
                 flex-direction: column;
+                background: white;
+                padding: 1rem;
+                margin-top: 0.5rem;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
                 gap: 1rem;
+            }
+
+            .nav-menu.show {
+                display: flex;
             }
 
             .nav-link {
                 display: block;
                 text-align: center;
+                width: 100%;
             }
         }
+
 
         .wrapper {
             padding-top: 80px;
@@ -174,7 +216,10 @@
                 <div class="logo-icon">💧</div>
                 <span>Waterly</span>
             </a>
-            <ul class="nav-menu">
+
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="{{ url_for('home') }}" class="nav-link {% if request.endpoint == 'home' %}active{% endif %}">Home</a></li>
                 <li><a href="{{ url_for('about') }}" class="nav-link {% if request.endpoint == 'services' %}active{% endif %}">About Us</a></li>
                 <li><a href="{{ url_for('contact') }}" class="nav-link {% if request.endpoint == 'contact' %}active{% endif %}">Contact</a></li>
@@ -209,5 +254,12 @@
         </div>
         <p>&copy; {{ current_year if current_year else 2025 }} Water Supply Portal. All rights reserved. | Building a sustainable water future for all.</p>
     </footer>
+    <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById("navMenu");
+            navMenu.classList.toggle("show");
+        }
+    </script>
+
 </body>
 </html>

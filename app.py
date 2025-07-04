@@ -7,7 +7,7 @@ from sqlalchemy import select, engine
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "1728fea11de1f2131857e082921c20ae"
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:tana9861751892%40@localhost:3306/waterSupply"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:TdfjeadUfaDARMRFgrfwQONOcoYBhdoV@hopper.proxy.rlwy.net:49145/railway"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 

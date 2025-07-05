@@ -1,13 +1,11 @@
 from flask import Flask, url_for, render_template, redirect, request
 from forms import Contact, SignupForm, LoginForm
-# from datas import data, add_data
-# from users import users, add_users
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import select, engine
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "1728fea11de1f2131857e082921c20ae"
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:TdfjeadUfaDARMRFgrfwQONOcoYBhdoV@hopper.proxy.rlwy.net:49145/railway"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:tana9861751892%40@localhost:3306/waterSupply"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
@@ -23,7 +21,7 @@ class Data(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     fullname = db.Column(db.String(50)) 
     email = db.Column(db.String(100))
-    number = db.Column(db.String)
+    number = db.Column(db.String(15))
     message = db.Column(db.Text)
 
 with app.app_context():
